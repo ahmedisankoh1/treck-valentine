@@ -38,7 +38,9 @@ p {
 /* Responsive styles for small-sized phones */
 @media (max-width: 600px) {
     body {
-        margin-top: 60px;
+        font-family: Arial, sans-serif;
+        background-color: #ffe6e6;
+        margin-top: 70px;
         padding: 10px;
         height: auto;
     }
@@ -47,6 +49,8 @@ p {
         padding: 15px;
         max-width: 100%;
         margin-top: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
