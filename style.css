@@ -40,7 +40,7 @@ p {
     body {
         font-family: Arial, sans-serif;
         background-color: #ffe6e6;
-        margin-top: 70px;
+        margin-top: 50px;
         padding: 10px;
         height: auto;
     }
@@ -60,5 +60,33 @@ p {
     p {
         font-size: 1em;
         line-height: 1.4;
+    }
+}
+
+/* Responsive styles for very small-sized phones */
+@media (max-width: 400px) {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffe6e6;
+        margin-top: 30px;
+        padding: 5px;
+        height: auto;
+    }
+
+    .container {
+        padding: 10px;
+        max-width: 100%;
+        margin-top: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 0.9em;
+        line-height: 1.3;
     }
 }
