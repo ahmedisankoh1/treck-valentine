@@ -3,18 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Message</title>
+    <title>Happy Birthday to Someone Special! 🎉</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+    
     <div class="container">
-        <h1>💖 Happy Valentine’s Day, Mama Puch! 💖</h1>
-        <p>From the moment you entered my life, everything changed in the most beautiful way. 🌹✨ You have filled my world with love, joy, and warmth that I never knew I needed. Even though we are miles apart, my heart beats only for you. ❤️ No distance, no space, and no time can ever weaken what I feel for you—because my love for you is limitless, unbreakable, and everlasting. 💞</p>
-        <p>Every day, I find new reasons to love you even more. 💕 It’s in the way you laugh 😄, the way you care 🤗, and the way you make everything feel right even when the world feels heavy. 🌎💫 You are my safe space, my happiness, my best friend, and the love of my life. 💑 I am endlessly grateful for you.</p>
-        <p>I miss you more than words can say 😢, but knowing that we share something so pure and special makes the distance feel a little smaller. ❤️‍🔥 Today, I just want to remind you of how incredibly loved you are. 💖 I hope this message brings a smile 😊 to your beautiful face because that smile is my favorite thing in the world. 😍</p>
-        <p>One day, we won’t have to count the miles between us. 🚀🌍 One day, I’ll hold you close 🤗💏 and tell you all of this in person. But until then, know that my heart belongs to you completely, and nothing will ever change that. ❤️💖</p>
-        <p>I love you more than words can express 💬, more than the stars in the sky ✨, more than all the distance between us. 🛤️ You are my forever Valentine. 🌹💘</p>
-        <p>With all my love,<br><b>Papa Puch ❤️💋</b></p>
+        <!-- Header -->
+        <header class="birthday-header">
+            <h1>🎉 Happy Birthday Rabia Halimatu Kamara 🎉</h1>
+            <div class="birthday-emojis">🎂🎈🎁🌟✨</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="birthday-content">
+            <!-- Section 1 -->
+            <div class="accordion-item" data-color="peach">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>🌅 The Beginning</h2>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>In just three months, you've managed to fill my life with more joy, laughter, and inspiration than I ever expected. It's incredible how quickly someone can become such an important part of your world, and that's exactly what you've done. From the very first conversation, I knew there was something special about you—something that made everything brighter and more meaningful.</p>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="accordion-item" data-color="lavender">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>💪 Your Boldness</h2>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>You're bold, fearless, and beautifully yourself—never afraid to show who you are or to chase after what you want. I admire how you embrace life with such confidence and authenticity. You don't just exist in the world; you make your mark on it, and that kind of courage is both rare and inspiring. Your boldness isn't just admirable—it's contagious, and it makes everyone around you feel braver too.</p>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="accordion-item" data-color="mint">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>📸 The Little Superpowers</h2>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Even your 'weird' selfies somehow turn out perfect, like a little superpower only you could have. There's this effortless magic in everything you do—whether it's making people laugh, turning ordinary moments into something memorable, or just being so genuinely yourself that it lights up every room you enter. You have this unique ability to make the mundane feel extraordinary, and that's a gift not everyone possesses.</p>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="accordion-item" data-color="soft-pink">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>💝 Why You Matter to Me</h2>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>But what I cherish most is the way you've impacted my life. You've shown me new perspectives, made me laugh until my sides hurt, and reminded me of the beauty in being unapologetically yourself. In these three months, you've become someone I genuinely care about, someone whose happiness matters to me, and someone I'm incredibly grateful to have met. Your friendship has been a wonderful surprise, and I can't imagine my days without our conversations and shared moments.</p>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="accordion-item" data-color="peach">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2>🌟 My Wish for You</h2>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Today, I celebrate you: your laughter, your kindness, your courage, and all the little things that make you who you are. I hope this new year of your life brings you everything you've been dreaming of and more. May you continue to be bold, continue to shine, and continue to be the amazing person who has brought so much light into my world. Happy birthday to someone who truly deserves all the happiness, love, and beautiful moments life has to offer! 🎂✨</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="birthday-footer">
+            <p>Made with 💖 just for you</p>
+        </footer>
     </div>
+
+    <script>
+        // Confetti Animation
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Confetti particles
+        const confetti = [];
+        const colors = ['#FF6B9D', '#C44569', '#F8B500', '#F0D101', '#A8E6CF', '#88D8C0', '#FFEAA7', '#DDA0DD'];
+
+        class ConfettiPiece {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 5 + 3;
+                this.speedY = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 5 - 2.5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+
+                if (this.y > canvas.height + 10) {
+                    this.y = -10;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        // Create confetti pieces
+        for (let i = 0; i < 50; i++) {
+            confetti.push(new ConfettiPiece());
+        }
+
+        // Animation loop
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            confetti.forEach(piece => {
+                piece.update();
+                piece.draw();
+            });
+
+            requestAnimationFrame(animateConfetti);
+        }
+
+        // Start confetti animation
+        animateConfetti();
+
+        // Accordion functionality
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            const item = header.parentElement;
+
+            // Close other accordions
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherContent = otherItem.querySelector('.accordion-content');
+                    const otherIcon = otherItem.querySelector('.accordion-icon');
+                    otherContent.style.maxHeight = null;
+                    otherIcon.textContent = '+';
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            // Toggle current accordion
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.textContent = '+';
+                item.classList.remove('active');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = '−';
+                item.classList.add('active');
+            }
+        }
+
+        // Auto-open first section on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const firstAccordion = document.querySelector('.accordion-header');
+                toggleAccordion(firstAccordion);
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
+
