@@ -131,8 +131,11 @@
             }
         }
 
-        // Create confetti pieces
-        for (let i = 0; i < 50; i++) {
+        // Create confetti pieces (fewer on mobile for better performance)
+        const isMobile = window.innerWidth <= 768;
+        const confettiCount = isMobile ? 25 : 50;
+        
+        for (let i = 0; i < confettiCount; i++) {
             confetti.push(new ConfettiPiece());
         }
 
@@ -186,6 +189,35 @@
                 const firstAccordion = document.querySelector('.accordion-header');
                 toggleAccordion(firstAccordion);
             }, 1000);
+        });
+
+        // Better mobile experience - handle resize
+        window.addEventListener('resize', () => {
+            // Adjust confetti count on orientation change
+            const isMobile = window.innerWidth <= 768;
+            const idealCount = isMobile ? 25 : 50;
+            
+            if (confetti.length !== idealCount) {
+                confetti.length = 0;
+                for (let i = 0; i < idealCount; i++) {
+                    confetti.push(new ConfettiPiece());
+                }
+            }
+        });
+
+        // Prevent zoom on double-tap for accordion headers
+        let lastTouchTime = 0;
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('touchend', (e) => {
+                const currentTime = new Date().getTime();
+                const timeDifference = currentTime - lastTouchTime;
+                
+                if (timeDifference < 300 && timeDifference > 0) {
+                    e.preventDefault();
+                }
+                
+                lastTouchTime = currentTime;
+            });
         });
     </script>
 </body>
