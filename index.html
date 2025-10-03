@@ -15,6 +15,20 @@
         <header class="birthday-header">
             <h1>🎉 Happy Birthday Rabia Halimatu Kamara 🎉</h1>
             <div class="birthday-emojis">🎂🎈🎁🌟✨</div>
+            
+            <!-- Photo Gallery Section -->
+            <div class="photo-gallery">
+                <div class="main-photo">
+                    <img src="images/main-photo.jpg" alt="Rabia" class="main-image" />
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="photo-grid">
+                    <img src="images/photo1.jpg" alt="Memory 1" class="gallery-image" />
+                    <img src="images/photo2.jpg" alt="Memory 2" class="gallery-image" />
+                    <img src="images/photo3.jpg" alt="Memory 3" class="gallery-image" />
+                    <img src="images/photo4.jpg" alt="Memory 4" class="gallery-image" />
+                </div>
+            </div>
         </header>
 
         <!-- Main Content -->
@@ -44,11 +58,24 @@
             <!-- Section 3 -->
             <div class="accordion-item" data-color="mint">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h2>📸 The Little Superpowers</h2>
+                    <h2>📸 The Little Superpowers & Beautiful Moments</h2>
                     <span class="accordion-icon">+</span>
                 </div>
                 <div class="accordion-content">
-                    <p>Even your 'weird' selfies somehow turn out perfect, like a little superpower only you could have. There's this effortless magic in everything you do—whether it's making people laugh, turning ordinary moments into something memorable, or just being so genuinely yourself that it lights up every room you enter. You have this unique ability to make the mundane feel extraordinary, and that's a gift not everyone possesses.</p>
+                    <div class="content-with-photos">
+                        <p>Even your 'weird' selfies somehow turn out perfect, like a little superpower only you could have. There's this effortless magic in everything you do—whether it's making people laugh, turning ordinary moments into something memorable, or just being so genuinely yourself that it lights up every room you enter. You have this unique ability to make the mundane feel extraordinary, and that's a gift not everyone possesses.</p>
+                        
+                        <div class="memory-photos">
+                            <div class="photo-item">
+                                <img src="images/memory1.jpg" alt="Beautiful moment" class="memory-image" />
+                                <span class="photo-caption">One of those perfect moments ✨</span>
+                            </div>
+                            <div class="photo-item">
+                                <img src="images/memory2.jpg" alt="Candid smile" class="memory-image" />
+                                <span class="photo-caption">Your beautiful smile 😊</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -79,6 +106,14 @@
         <footer class="birthday-footer">
             <p>Made with 💖 just for you</p>
         </footer>
+    </div>
+
+    <!-- Image Modal for Full-Screen View -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="">
+        </div>
     </div>
 
     <script>
@@ -218,6 +253,82 @@
                 
                 lastTouchTime = currentTime;
             });
+        });
+
+        // Image Modal Functionality
+        function initializeImageModal() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            // Add click event to all images
+            document.querySelectorAll('.gallery-image, .memory-image, .main-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                });
+            });
+            
+            // Close modal events
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+        
+        // Image Loading with Fallback
+        function handleImageErrors() {
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    // Replace with a placeholder or hide the image
+                    this.style.display = 'none';
+                    
+                    // Optionally show a placeholder
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'image-placeholder';
+                    placeholder.innerHTML = '📷<br><small>Photo will appear here</small>';
+                    placeholder.style.cssText = `
+                        width: ${this.offsetWidth || 100}px;
+                        height: ${this.offsetHeight || 100}px;
+                        background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+                        border-radius: ${this.style.borderRadius || '10px'};
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        color: #999;
+                        font-size: 24px;
+                        text-align: center;
+                        border: 2px dashed #ccc;
+                    `;
+                    this.parentNode.insertBefore(placeholder, this);
+                });
+            });
+        }
+        
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const firstAccordion = document.querySelector('.accordion-header');
+                toggleAccordion(firstAccordion);
+            }, 1000);
+            
+            // Initialize image features
+            initializeImageModal();
+            handleImageErrors();
         });
     </script>
 </body>
